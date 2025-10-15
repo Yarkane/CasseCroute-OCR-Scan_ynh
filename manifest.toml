@@ -19,38 +19,26 @@ demo = "https://demo.example.com"
 admindoc = "https://yunohost.org/packaging_apps"
 userdoc = "https://yunohost.org/apps"
 code = "https://some.forge.com/example/example"
-# FIXME: optional but recommended if relevant, this is meant to contain the Common Platform Enumeration, which is
-# sort of a standard id for applications defined by the NIST. In particular, YunoHost may use this is in the future
-# to easily track CVE (=security reports) related to apps. The CPE may be obtained by searching here:
-# https://nvd.nist.gov/products/cpe/search.
-# For example, for Nextcloud, the CPE is 'cpe:2.3:a:nextcloud:nextcloud' (no need to include the version number)
-cpe = "???"
-
-# FIXME: optional but recommended (or remove if irrelevant / not applicable).
-# This is meant to be an URL where people can financially support this app, especially when its development is based
-# on volunteers and/or financed by its community. YunoHost may later advertise it in the webadmin.
-fund = "???"
 
 [integration]
 yunohost = ">= 12.0.9"
 helpers_version = "2.1"
-# FIXME: can be replaced by a list of supported archs using the dpkg --print-architecture nomenclature (amd64/i386/armhf/arm64), for example: ["amd64", "i386"]
 architectures = "all"
-multi_instance = true
+multi_instance = false
 
 # FIXME: replace with true, false, or "not_relevant".
 # Not to confuse with the "sso" key: the "ldap" key corresponds to wether or not a user *can* login on the app using
 # its YunoHost credentials.
-ldap = "?"
+ldap = false
 
 # FIXME: replace with true, false, or "not_relevant".
 # Not to confuse with the "ldap" key: the "sso" key corresponds to wether or not a user is *automatically logged-in*
 # on the app when logged-in on the YunoHost portal.
-sso = "?"
+sso = false
 
 # FIXME: replace with an **estimate** minimum disk and RAM requirements. e.g. 20M, 400M, 1G...
 disk = "50M"
-ram.build = "50M"
+ram.build = "400M"
 ram.runtime = "50M"
 
 [install]
@@ -97,8 +85,8 @@ ram.runtime = "50M"
     # This will pre-fetch the asset which can then be deployed during the install/upgrade scripts with :
     #    ynh_setup_source --dest_dir="$install_dir"
     # You can also define other assets than "main" and add --source_id="foobar" in the previous command
-    url = "https://github.com/foo/bar/archive/refs/tags/v1.2.3.tar.gz"
-    sha256 = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+    url = "https://github.com/Yarkane/CasseCroute-OCR-Scan/archive/refs/heads/master.tar.gz"
+    sha256 = "9a8c631cf12e6a1591d50c6d1f2989518a8c4299c5cca39779cd0f0d3f2e4574"
 
     # These infos are used by https://github.com/YunoHost/apps_tools/blob/main/autoupdate_app_sources/autoupdate_app_sources.py
     # to auto-update the previous asset urls and sha256sum + manifest version
@@ -129,7 +117,7 @@ ram.runtime = "50M"
     [resources.apt]
     # This will automatically install/uninstall the following apt packages
     # and implicitly define the $phpversion setting as 8.0 (if phpX.Y-foobar dependencies are listed)
-    packages = "mariadb-server, deb1, deb2, php8.3-foo, php8.3-bar"
+    packages = "pdfsandwich, poppler-utils, tesseract-ocr, tesseract-ocr-fra, tesseract-ocr-eng, ghostscript"
 
     [resources.database]
     # This will automatically provision/deprovison a MySQL DB and store the corresponding credentials in settings $db_user, $db_name, $db_pwd

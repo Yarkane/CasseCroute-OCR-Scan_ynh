@@ -56,6 +56,25 @@ ynh_setup_source --dest_dir="$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
 #=================================================
+# BUILD APP
+#=================================================
+ynh_script_progression "Building $app..."
+
+ynh_go_install
+
+pushd $install_dir/
+	ynh_hide_warnings ynh_exec_as_app CGO_ENABLED=0 go build -o $install_dir/
+popd
+
+ynh_go_remove
+
+ynh_safe_rm "$install_dir/.cache/"
+ynh_safe_rm "$install_dir/go/"
+ynh_safe_rm "$install_dir/.go-version"
+
+chmod +x "$install_dir/autoocr"
+
+#=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
@@ -72,25 +91,17 @@ ynh_script_progression "Adding $app's configuration files..."
 ###
 ### Check the documentation of `ynh_config_add` for more info.
 
-ynh_config_add --template="some_config_file" --destination="$install_dir/some_config_file"
-
-# FIXME: this should be handled by the core in the future
-### You may need to use chmod 600 instead of 400,
-### for example if the app is expected to be able to modify its own config
-chmod 400 "$install_dir/some_config_file"
-chown "$app:$app" "$install_dir/some_config_file"
-
-### For more complex cases where you want to replace stuff using regexes,
-### you shoud rely on ynh_replace (which is basically a wrapper for sed)
-### When doing so, you also need to manually call ynh_store_file_checksum
-###
-### ynh_replace --match="match_string" --replace="replace_string" --file="$install_dir/some_config_file"
-### ynh_store_file_checksum "$install_dir/some_config_file"
+ynh_config_add --template="policy.xml" --destination="$install_dir/configs/policy.xml"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
+
+cp "$install_dir/configs/policy.xml" /etc/ImageMagick-6/policy.xml
+
+mkdir "$install_dir/data_in"
+mkdir "$install_dir/data_out"
 
 ### `ynh_config_add_phpfpm` is used to set up a PHP config.
 ### You can remove it if your app doesn't use PHP.
@@ -147,7 +158,7 @@ ynh_config_add_systemd
 ### to proceed if you later realize that you need to enable some flags that
 ### weren't enabled on old installs (be careful it'll override the existing
 ### service though so you should re-provide all relevant flags when doing so)
-yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
+yunohost service add "$app" --description="Service for scanning pdf scans via OCR and clean them with SandwichPdf" --log="/var/log/$app/$app.log"
 
 ### `ynh_config_add_logrotate` is used to configure a logrotate configuration for the logs of this app.
 ### Use this helper only if there is effectively a log file for this app.
@@ -173,8 +184,8 @@ ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failreg
 ### forms.
 
 # Installation with curl
-ynh_script_progression "Finalizing installation..."
-ynh_local_curl "/INSTALL_PATH" "key1=value1" "key2=value2" "key3=value3"
+#ynh_script_progression "Finalizing installation..."
+#ynh_local_curl "/INSTALL_PATH" "key1=value1" "key2=value2" "key3=value3"
 
 #=================================================
 # START SYSTEMD SERVICE
