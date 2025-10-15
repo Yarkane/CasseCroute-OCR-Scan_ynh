@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/autoocr -i __INSTALL_DIR__/data_in -o __INSTALL_DIR__/data_out --languages "fra+eng" --keep-original false
+ExecStart=__INSTALL_DIR__/autoocr -i __DATA_DIR__/data_in -o __DATA_DIR__/data_out --languages "fra+eng" --keep-original false
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
