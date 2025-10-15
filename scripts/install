@@ -91,17 +91,14 @@ ynh_script_progression "Adding $app's configuration files..."
 ###
 ### Check the documentation of `ynh_config_add` for more info.
 
-ynh_config_add --template="policy.xml" --destination="$install_dir/configs/policy.xml"
+ynh_config_add --template="policy.xml" --destination="$install_dir/policy.xml"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
 
-cp "$install_dir/configs/policy.xml" /etc/ImageMagick-6/policy.xml
-
-mkdir "$install_dir/data_in"
-mkdir "$install_dir/data_out"
+cp "$install_dir/policy.xml" /etc/ImageMagick-6/policy.xml
 
 ### `ynh_config_add_phpfpm` is used to set up a PHP config.
 ### You can remove it if your app doesn't use PHP.
