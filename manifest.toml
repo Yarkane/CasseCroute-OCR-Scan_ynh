@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "CasseCroute-OCR-Scan"
 name = "CasseCroute : OCR Scan"
-description.en = "Service for scanning pdf scans via OCR and clean them with SandwichPdf"
-description.fr = "Service de scan de documents pdf via OCR et nettoyage avec SandwichPdf"
+description.en = "Service for scanning pdf scans via OCR and clean them with PdfSandwich"
+description.fr = "Service de scan de documents pdf via OCR et nettoyage avec PdfSandwich"
 
 version = "1.0~ynh1"
 

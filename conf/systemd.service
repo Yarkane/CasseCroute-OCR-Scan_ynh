@@ -1,5 +1,5 @@
 [Unit]
-Description=Service for scanning pdf scans via OCR and clean them with SandwichPdf
+Description=Service for scanning pdf scans via OCR and clean them with PdfSandwich
 After=network.target
 
 [Service]
