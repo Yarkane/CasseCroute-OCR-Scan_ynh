@@ -2,14 +2,14 @@
 
 packaging_format = 2
 
-id = "CasseCroute-OCR-Scan"
+id = "cassecroute"
 name = "CasseCroute : OCR Scan"
 description.en = "Service for scanning pdf scans via OCR and clean them with PdfSandwich"
 description.fr = "Service de scan de documents pdf via OCR et nettoyage avec PdfSandwich"
 
 version = "1.0~ynh1"
 
-maintainers = ["johndoe"]
+maintainers = ["yarkane"]
 
 [upstream]
 # NB: Only the "license" key is mandatory. Remove entries for which there's no relevant data
@@ -68,12 +68,12 @@ ram.runtime = "50M"
     # this is a generic question - ask strings are automatically handled by YunoHost's core
     type = "user"
 
-    [install.password]
+    #[install.password]
     # this is a generic question - ask strings are automatically handled by YunoHost's core
     # Note that user-provided passwords questions are not automatically saved as setting
-    help.en = "Use the help field to add an information for the admin about this question."
-    help.fr = "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
-    type = "password"
+    #help.en = "Use the help field to add an information for the admin about this question."
+    #help.fr = "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
+    #type = "password"
 
 [resources]
     # See the packaging documentation for the full set
