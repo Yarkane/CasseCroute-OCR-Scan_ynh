@@ -119,6 +119,6 @@ ram.runtime = "50M"
     # and implicitly define the $phpversion setting as 8.0 (if phpX.Y-foobar dependencies are listed)
     packages = "pdfsandwich, poppler-utils, tesseract-ocr, tesseract-ocr-fra, tesseract-ocr-eng, ghostscript"
 
-    [resources.database]
+    #[resources.database]
     # This will automatically provision/deprovison a MySQL DB and store the corresponding credentials in settings $db_user, $db_name, $db_pwd
-    type = "mysql"
+    #type = "mysql"
