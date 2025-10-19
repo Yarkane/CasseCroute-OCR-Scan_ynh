@@ -49,7 +49,7 @@ ram.runtime = "50M"
     [install.path]
     # this is a generic question - ask strings are automatically handled by YunoHost's core
     type = "path"
-    default = "/example"
+    default = "/cassecroute"
 
     [install.init_main_permission]
     # this is a generic question - ask strings are automatically handled by YunoHost's core
