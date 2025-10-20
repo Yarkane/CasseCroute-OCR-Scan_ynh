@@ -1,3 +1,3 @@
-Ceci est une fausse doc d'admin pour cette app
+Rien de particulier à ce stade pour le moment.
 
 Le dossier d'install de l'app est `__INSTALL_DIR__`

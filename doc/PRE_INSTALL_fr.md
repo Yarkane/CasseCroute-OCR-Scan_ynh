@@ -1,1 +1,1 @@
-Ceci est un faux disclaimer à présenter avant l'installation
+Rien de spécial à ce stade
