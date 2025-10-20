@@ -1,5 +1,5 @@
 [Unit]
-Description=Small description of the service
+Description=Service for scanning pdf scans via OCR and clean them with PdfSandwich
 After=network.target
 
 [Service]
@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/script
+ExecStart=__INSTALL_DIR__/autoocr -i __DATA_DIR__/data_in -o __DATA_DIR__/data_out --port __PORT__ --languages "fra+eng" --keep-original false
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
