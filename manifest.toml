@@ -80,8 +80,8 @@ ram.runtime = "50M"
     # This will pre-fetch the asset which can then be deployed during the install/upgrade scripts with :
     #    ynh_setup_source --dest_dir="$install_dir"
     # You can also define other assets than "main" and add --source_id="foobar" in the previous command
-    url = "https://github.com/Yarkane/CasseCroute-OCR-Scan/archive/refs/tags/0.1.1.tar.gz"
-    sha256 = "3b1f8904453b1af9028fa78077a2dc1c1e4f73e8cf7591f4b999feb97a7b9e4e"
+    url = "https://github.com/Yarkane/CasseCroute-OCR-Scan/archive/refs/tags/0.1.2.tar.gz"
+    sha256 = "5d73636ee680b0a1a7641e41579b4463bfb0e26e75b007f2df087db2efd3cd07"
 
     # These infos are used by https://github.com/YunoHost/apps_tools/blob/main/autoupdate_app_sources/autoupdate_app_sources.py
     # to auto-update the previous asset urls and sha256sum + manifest version
